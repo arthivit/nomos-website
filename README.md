@@ -1,7 +1,7 @@
 # nomos-website
 # Philonomosian Society Website
 
-A redesigned website for Georgetown University's Philonomosian Society, developed by **Hoya Developers**.
+for Georgetown University's Philonomosian Society, developed by **Hoya Developers**.
 
 ## About
 
