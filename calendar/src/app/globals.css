@@ -1,0 +1,58 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    color: #222;
+    background: #fff;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 20px 5%;
+    background: #222;
+    color: white;
+}
+
+.header nav {
+    display: flex;
+    gap: 20px;
+}
+
+.header a {
+    color: white;
+    text-decoration: none;
+}
+
+.main {
+    min-height: 80vh;
+    padding: 50px 5%;
+}
+
+.main h1 {
+    margin-bottom: 20px;
+}
+
+.main section {
+    margin-top: 40px;
+}
+
+.footer {
+    padding: 25px;
+    text-align: center;
+    background: #222;
+    color: white;
+}
+
+@media (max-width: 600px) {
+    .header {
+        flex-direction: column;
+        gap: 15px;
+    }
+}
