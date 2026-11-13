@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Active Members | Philonomosian Society</title>
+  <style>
+    body { font-family: Georgia, serif; margin: 0; background: #f7f5f0; color: #1a1a1a; }
+    header { background: #041E42; color: white; text-align: center; padding: 40px 20px; }
+    header h1 { margin: 0; font-size: 2rem; }
+    header p { margin: 8px 0 0; color: #c8ccd4; }
+    main { max-width: 900px; margin: 0 auto; padding: 24px 16px; }
+    .controls { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 20px; }
+    .controls input, .controls select { padding: 10px; font-size: 1rem; border: 1px solid #ccc; border-radius: 6px; }
+    .controls input { flex: 1; min-width: 200px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+    .card { background: white; border-radius: 10px; padding: 18px; box-shadow: 0 1px 4px rgba(0,0,0,0.08); }
+    .card h3 { margin: 0 0 4px; }
+    .role { color: #8a6d1d; font-weight: bold; font-size: 0.9rem; }
+    .info { color: #555; font-size: 0.9rem; margin-top: 6px; }
+    #count { color: #555; margin-bottom: 12px; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Philonomosian Society</h1>
+    <p>Active Members</p>
+  </header>
+
+  <main>
+    <div class="controls">
+      <input id="search" type="text" placeholder="Search by name or major...">
+      <select id="filter">
+        <option value="all">Everyone</option>
+        <option value="board">Board only</option>
+        <option value="member">Members only</option>
+      </select>
+    </div>
+    <p id="count"></p>
+    <div class="grid" id="list"></div>
+  </main>
+
+  <script>
+    // ✏️ EDIT THIS LIST — one line per person.
+    // Use role "Member" for regular members; anything else counts as board.
+    const members = [
+      { name: "Jane Doe",     role: "President",      year: 2027, major: "Government" },
+      { name: "John Smith",   role: "Vice President", year: 2027, major: "Philosophy" },
+      { name: "Alex Kim",     role: "Treasurer",      year: 2028, major: "Finance" },
+      { name: "Sam Rivera",   role: "Member",         year: 2028, major: "History" },
+      { name: "Taylor Brown", role: "Member",         year: 2029, major: "English" },
+      { name: "Jordan Lee",   role: "Member",         year: 2029, major: "Economics" }
+    ];
+
+    const list = document.getElementById("list");
+    const search = document.getElementById("search");
+    const filter = document.getElementById("filter");
+    const count = document.getElementById("count");
+
+    function show() {
+      const text = search.value.toLowerCase();
+      const type = filter.value;
+
+      const matches = members.filter(m => {
+        const isBoard = m.role !== "Member";
+        if (type === "board" && !isBoard) return false;
+        if (type === "member" && isBoard) return false;
+        return (m.name + " " + m.major).toLowerCase().includes(text);
+      });
+
+      count.textContent = `Showing ${matches.length} of ${members.length} members`;
+      list.innerHTML = matches.map(m => `
+        <div class="card">
+          <h3>${m.name}</h3>
+          <div class="role">${m.role}</div>
+          <div class="info">Class of ${m.year} · ${m.major}</div>
+        </div>
+      `).join("");
+    }
+
+    search.addEventListener("input", show);
+    filter.addEventListener("change", show);
+    show();
+  </script>
+</body>
+</html>
