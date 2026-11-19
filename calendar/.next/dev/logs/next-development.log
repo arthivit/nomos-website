@@ -1,2 +1,4 @@
-{"timestamp":"00:00:01.413","source":"Server","level":"LOG","message":""}
-{"timestamp":"00:00:39.355","source":"Server","level":"LOG","message":"✓ Compiled in 361ms"}
+{"timestamp":"00:00:01.619","source":"Server","level":"LOG","message":""}
+{"timestamp":"00:04:46.168","source":"Server","level":"LOG","message":"✓ Compiled in 800ms"}
+{"timestamp":"00:05:10.686","source":"Server","level":"LOG","message":"✓ Compiled in 14ms"}
+{"timestamp":"00:05:34.402","source":"Server","level":"LOG","message":"✓ Compiled in 20ms"}

@@ -1,58 +1,568 @@
+
+/* =========================================
+   1. DESIGN TOKENS & COLOR THEMES
+========================================= */
+
+:root {
+    color-scheme: light;
+
+    --background: #f7f6f2;
+    --surface: #ffffff;
+    --surface-secondary: #eeece5;
+
+    --primary: #172f4d;
+    --primary-hover: #25466b;
+    --accent: #b99a59;
+
+    --text: #202a35;
+    --text-secondary: #626d78;
+
+    --border: #deddd6;
+    --shadow: 0 8px 30px rgba(20, 35, 50, 0.07);
+
+    --radius: 12px;
+    --content-width: 1150px;
+
+    --font-heading: Georgia, "Times New Roman", serif;
+    --font-body: Arial, Helvetica, sans-serif;
+}
+
+/* Automatic dark mode based on device settings */
+
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+        color-scheme: dark;
+
+        --background: #121a24;
+        --surface: #1b2735;
+        --surface-secondary: #253344;
+
+        --primary: #b5cce5;
+        --primary-hover: #d0e0f0;
+        --accent: #d5b775;
+
+        --text: #edf1f5;
+        --text-secondary: #b1bdc9;
+
+        --border: #354454;
+        --shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+    }
+}
+
+/* Manually selected dark theme */
+
+:root[data-theme="dark"] {
+    color-scheme: dark;
+
+    --background: #121a24;
+    --surface: #1b2735;
+    --surface-secondary: #253344;
+
+    --primary: #b5cce5;
+    --primary-hover: #d0e0f0;
+    --accent: #d5b775;
+
+    --text: #edf1f5;
+    --text-secondary: #b1bdc9;
+
+    --border: #354454;
+    --shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* =========================================
+   2. GLOBAL RESET
+========================================= */
+
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
-body {
-    font-family: Arial, sans-serif;
-    color: #222;
-    background: #fff;
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 90px;
 }
 
+body {
+    font-family: var(--font-body);
+    background: var(--background);
+    color: var(--text);
+
+    line-height: 1.7;
+    font-size: 16px;
+
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease;
+}
+
+a {
+    color: var(--primary);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+a:hover {
+    color: var(--accent);
+}
+
+button {
+    font: inherit;
+    cursor: pointer;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+::selection {
+    background: var(--accent);
+    color: #172f4d;
+}
+
+/* =========================================
+   3. ACCESSIBILITY
+========================================= */
+
+/* Visible keyboard navigation */
+
+:focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 4px;
+}
+
+.skip-link {
+    position: absolute;
+    top: -100px;
+    left: 16px;
+    z-index: 1000;
+
+    padding: 12px 18px;
+    background: var(--primary);
+    color: white;
+}
+
+.skip-link:focus {
+    top: 16px;
+}
+
+/* Respect reduced-motion preferences */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* =========================================
+   4. HEADER & NAVIGATION
+========================================= */
+
 .header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+
     display: flex;
     justify-content: space-between;
     align-items: center;
 
-    padding: 20px 5%;
-    background: #222;
-    color: white;
+    min-height: 76px;
+    padding: 12px max(5%, calc((100% - var(--content-width)) / 2));
+
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.03);
+}
+
+.header h2 {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary);
 }
 
 .header nav {
     display: flex;
-    gap: 20px;
+    align-items: center;
+    gap: 28px;
 }
 
-.header a {
-    color: white;
-    text-decoration: none;
+.header nav a {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-secondary);
 }
+
+.header nav a:hover {
+    color: var(--accent);
+}
+
+/* =========================================
+   5. MAIN CONTENT
+========================================= */
 
 .main {
-    min-height: 80vh;
-    padding: 50px 5%;
+    width: min(90%, var(--content-width));
+    min-height: 75vh;
+    margin: 0 auto;
+    padding: 65px 0;
+}
+
+.main h1,
+.main h2,
+.main h3 {
+    font-family: var(--font-heading);
+    color: var(--primary);
+    line-height: 1.25;
 }
 
 .main h1 {
-    margin-bottom: 20px;
+    font-size: clamp(2.3rem, 5vw, 3.8rem);
+    margin-bottom: 22px;
 }
 
-.main section {
-    margin-top: 40px;
+.main h2 {
+    font-size: clamp(1.7rem, 3vw, 2.3rem);
+    margin-bottom: 18px;
 }
+
+.main h3 {
+    font-size: 1.35rem;
+    margin-bottom: 12px;
+}
+
+.main p {
+    color: var(--text-secondary);
+    margin-bottom: 18px;
+    max-width: 75ch;
+}
+
+/* =========================================
+   6. HERO SECTION
+========================================= */
+
+.hero {
+    padding: 65px 50px;
+    margin-bottom: 65px;
+
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-top: 4px solid var(--accent);
+
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+}
+
+.hero h1 {
+    max-width: 850px;
+}
+
+.hero p {
+    font-size: 1.1rem;
+}
+
+/* =========================================
+   7. SECTIONS & CARDS
+========================================= */
+
+.section {
+    margin-bottom: 65px;
+}
+
+.section-header {
+    margin-bottom: 28px;
+    padding-bottom: 15px;
+
+    border-bottom: 1px solid var(--border);
+}
+
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+}
+
+.card {
+    padding: 26px;
+
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+
+    box-shadow: var(--shadow);
+
+    transition:
+        transform 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.card:hover {
+    transform: translateY(-3px);
+    border-color: var(--accent);
+}
+
+.card h3 {
+    font-family: var(--font-heading);
+    color: var(--primary);
+    margin-bottom: 12px;
+}
+
+.card p {
+    color: var(--text-secondary);
+}
+
+/* =========================================
+   8. BUTTONS
+========================================= */
+
+.button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 12px 24px;
+
+    background: var(--primary);
+    color: #ffffff;
+
+    border: 1px solid var(--primary);
+    border-radius: 6px;
+
+    font-weight: 600;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+.button:hover {
+    background: var(--primary-hover);
+    color: #ffffff;
+    transform: translateY(-2px);
+}
+
+/* =========================================
+   9. FORMS & INPUTS
+========================================= */
+
+input,
+textarea,
+select {
+    width: 100%;
+    padding: 12px 14px;
+
+    color: var(--text);
+    background: var(--surface);
+
+    border: 1px solid var(--border);
+    border-radius: 6px;
+
+    font: inherit;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    border-color: var(--accent);
+}
+
+/* =========================================
+   10. CALENDAR / EMBEDS
+========================================= */
+
+.calendar-embed {
+    width: 100%;
+    overflow: hidden;
+
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+}
+
+.calendar-embed iframe {
+    display: block;
+    width: 100%;
+    min-height: 600px;
+    border: 0;
+}
+
+/* =========================================
+   11. FOOTER
+========================================= */
 
 .footer {
-    padding: 25px;
+    padding: 35px 5%;
+
     text-align: center;
-    background: #222;
-    color: white;
+
+    background: var(--primary);
+    color: #ffffff;
+}
+
+.footer p {
+    color: #e0e6ed;
+    font-size: 0.9rem;
+}
+
+/* =========================================
+   12. TABLET RESPONSIVENESS
+   768px - 1024px
+========================================= */
+
+@media (min-width: 601px) and (max-width: 1024px) {
+    .header {
+        padding: 14px 4%;
+    }
+
+    .header nav {
+        gap: 18px;
+    }
+
+    .main {
+        width: 92%;
+        padding: 50px 0;
+    }
+
+    .hero {
+        padding: 45px 35px;
+    }
+
+    .card-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .section {
+        margin-bottom: 50px;
+    }
+}
+
+/* =========================================
+   13. PHONE RESPONSIVENESS
+   600px and below
+========================================= */
+
+@media (max-width: 600px) {
+    html {
+        scroll-padding-top: 110px;
+    }
+
+    body {
+        font-size: 15px;
+    }
+
+    .header {
+        position: static;
+        padding: 14px 5%;
+
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .header h2 {
+        font-size: 1.35rem;
+    }
+
+    .header nav {
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 12px 22px;
+    }
+
+    .header nav a {
+        font-size: 0.9rem;
+    }
+
+    .main {
+        width: 90%;
+        padding: 35px 0;
+    }
+
+    .hero {
+        padding: 32px 22px;
+        margin-bottom: 40px;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+
+    .section {
+        margin-bottom: 42px;
+    }
+
+    .card-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .card {
+        padding: 22px;
+    }
+
+    .calendar-embed iframe {
+        min-height: 500px;
+    }
+
+    .footer {
+        padding: 28px 5%;
+    }
+}
+
+
+
+/* Theme toggle */
+
+.theme-toggle {
+    padding: 8px 14px;
+
+    background: var(--surface-secondary);
+    color: var(--text);
+
+    border: 1px solid var(--border);
+    border-radius: 20px;
+
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.theme-toggle:hover {
+    border-color: var(--accent);
 }
 
 @media (max-width: 600px) {
-    .header {
-        flex-direction: column;
-        gap: 15px;
+    .theme-toggle {
+        font-size: 0.8rem;
+        padding: 7px 12px;
     }
+}
+
+.calendar-embed {
+    width: 80vw;
+    max-width: 100%;
+    margin: 0 auto;
+
+    overflow: hidden;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+}
+
+.calendar-embed iframe {
+    display: block;
+
+    width: 100%;
+    height: 600px;
+
+    border: 0;
 }
