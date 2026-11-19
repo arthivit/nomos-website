@@ -1,0 +1,376 @@
+/* Members page — Philonomosian Society
+   Colors and fonts are set here at the top so they're easy to change. */
+
+:root {
+  --navy: #122544;
+  --navy-dark: #0c1a31;
+  --gold: #c4a35a;
+  --gold-dark: #8c6d2c;
+  --page: #f6f4ef;
+  --white: #ffffff;
+  --text: #22252b;
+  --gray: #646a74;
+  --border: #ddd8cc;
+
+  --heading-font: "EB Garamond", Georgia, "Times New Roman", serif;
+  --body-font: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--page);
+  color: var(--text);
+  font-family: var(--body-font);
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.wrap {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+h1, h2, h3 {
+  font-family: var(--heading-font);
+  font-weight: 600;
+  color: var(--navy);
+}
+
+/* ---------- Header ---------- */
+
+.site-header {
+  background: var(--navy);
+  color: #fff;
+  border-bottom: 4px solid var(--gold);
+}
+
+.header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #fff;
+  text-decoration: none;
+}
+
+.brand-mark {
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  font-family: var(--heading-font);
+  font-size: 20px;
+}
+
+.brand-name {
+  font-family: var(--heading-font);
+  font-size: 21px;
+  font-weight: 600;
+}
+
+.site-nav {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px 24px;
+}
+
+.site-nav a,
+.nav-menu summary {
+  color: #d6dbe4;
+  text-decoration: none;
+  font-size: 15px;
+}
+
+.site-nav a:hover,
+.nav-menu summary:hover { color: #fff; }
+
+.site-nav a[aria-current="page"] {
+  color: var(--gold);
+}
+
+/* "About Us" dropdown, like the menu on the current site */
+.nav-menu { position: relative; }
+
+.nav-menu summary {
+  cursor: pointer;
+  list-style: none;
+}
+
+.nav-menu summary::-webkit-details-marker { display: none; }
+.nav-menu summary::after { content: " ▾"; font-size: 12px; }
+
+.nav-dropdown {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 0;
+  z-index: 10;
+  min-width: 210px;
+  padding: 6px 0;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--gold);
+}
+
+.nav-dropdown a {
+  display: block;
+  padding: 7px 16px;
+  color: var(--text);
+  font-size: 15px;
+}
+
+.nav-dropdown a:hover {
+  color: var(--navy);
+  background: var(--page);
+}
+
+.page-title {
+  padding-top: 40px;
+  padding-bottom: 36px;
+}
+
+.page-title h1 {
+  margin: 0;
+  color: #fff;
+  font-size: 52px;
+  line-height: 1.1;
+}
+
+.page-title p {
+  max-width: 620px;
+  margin: 10px 0 0;
+  color: #c3cad6;
+  font-size: 17px;
+}
+
+.page-title em {
+  color: var(--gold);
+  font-family: var(--heading-font);
+  font-size: 19px;
+}
+
+/* ---------- Sections ---------- */
+
+.block {
+  padding-top: 44px;
+}
+
+.block:last-child {
+  padding-bottom: 60px;
+}
+
+.block h2 {
+  margin: 0 0 18px;
+  font-size: 30px;
+}
+
+.block-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.count {
+  margin: 0;
+  color: var(--gray);
+  font-size: 14px;
+}
+
+/* ---------- Officers ---------- */
+
+.officer-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.officer {
+  padding: 18px 20px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--navy);
+}
+
+.officer .title {
+  margin: 0;
+  color: var(--gold-dark);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.officer h3 {
+  margin: 2px 0 4px;
+  font-size: 24px;
+  line-height: 1.2;
+}
+
+.officer .details {
+  margin: 0;
+  color: var(--gray);
+  font-size: 14px;
+}
+
+/* ---------- Filters ---------- */
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.filters input,
+.filters select {
+  height: 42px;
+  padding: 0 12px;
+  font: inherit;
+  font-size: 15px;
+  color: var(--text);
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+}
+
+.filters input {
+  flex: 1 1 280px;
+}
+
+.filters input:focus,
+.filters select:focus {
+  outline: 2px solid var(--gold);
+  outline-offset: -1px;
+}
+
+/* ---------- Member cards ---------- */
+
+.member-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.member {
+  padding: 16px 18px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+}
+
+.member h3 {
+  margin: 0;
+  font-size: 21px;
+  line-height: 1.2;
+}
+
+.member .officer-title {
+  color: var(--gold-dark);
+  font-family: var(--body-font);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.member .major {
+  margin: 4px 0 0;
+  font-size: 15px;
+}
+
+.member .details {
+  margin: 2px 0 0;
+  color: var(--gray);
+  font-size: 14px;
+}
+
+.member .cohort {
+  font-family: var(--heading-font);
+  font-style: italic;
+  font-size: 16px;
+  color: var(--navy);
+}
+
+.empty {
+  padding: 28px;
+  text-align: center;
+  color: var(--gray);
+  background: var(--white);
+  border: 1px solid var(--border);
+}
+
+.empty button {
+  font: inherit;
+  color: var(--navy);
+  background: none;
+  border: none;
+  padding: 0;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* ---------- Footer ---------- */
+
+.site-footer {
+  background: var(--navy-dark);
+  color: #c3cad6;
+  font-size: 14px;
+  border-top: 4px solid var(--gold);
+}
+
+.footer-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px 72px;
+  padding-top: 32px;
+  padding-bottom: 24px;
+}
+
+.footer-row p { margin: 0; }
+
+.footer-title {
+  margin-bottom: 4px !important;
+  color: var(--gold);
+  font-family: var(--heading-font);
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.site-footer a { color: #fff; }
+
+.copyright {
+  margin: 0 auto;
+  padding-top: 14px;
+  padding-bottom: 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  color: #8f99aa;
+  font-size: 13px;
+}
+
+/* ---------- Smaller screens ---------- */
+
+@media (max-width: 860px) {
+  .officer-grid,
+  .member-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 560px) {
+  .officer-grid,
+  .member-grid { grid-template-columns: 1fr; }
+  .page-title h1 { font-size: 40px; }
+  .filters select { flex: 1 1 45%; }
+}

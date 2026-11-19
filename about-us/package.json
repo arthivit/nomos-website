@@ -1,0 +1,14 @@
+{
+  "name": "philonomosian-active-members",
+  "version": "1.0.0",
+  "description": "About us and meet the board for the Philonomosian Society website",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "license": "UNLICENSED",
+  "private": true
+}
