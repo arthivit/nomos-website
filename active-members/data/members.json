@@ -1,0 +1,27 @@
+[
+  { "name": "Eleanor Whitfield", "role": "President", "cohort": "Federalist", "classYear": 2027, "school": "College", "major": "Government", "hometown": "Boston, MA" },
+  { "name": "Marcus Delgado", "role": "Vice President", "cohort": "Liberal", "classYear": 2027, "school": "SFS", "major": "International Politics", "hometown": "San Antonio, TX" },
+  { "name": "Priya Raman", "role": "Secretary", "cohort": "Independent", "classYear": 2028, "school": "College", "major": "Philosophy", "hometown": "Edison, NJ" },
+  { "name": "Thomas Okafor", "role": "Treasurer", "cohort": "Tory", "classYear": 2028, "school": "MSB", "major": "Finance", "hometown": "Atlanta, GA" },
+  { "name": "Clara Bennett", "role": "Amanuensis", "cohort": "Progressive", "classYear": 2028, "school": "College", "major": "History", "hometown": "Chicago, IL" },
+  { "name": "Julian Park", "role": "Censor", "cohort": "Federalist", "classYear": 2029, "school": "SFS", "major": "Regional & Comparative Studies", "hometown": "Seattle, WA" },
+
+  { "name": "Sofia Marchetti", "role": "Member", "cohort": "Liberal", "classYear": 2027, "school": "College", "major": "English", "hometown": "Providence, RI" },
+  { "name": "Daniel Asante", "role": "Member", "cohort": "Progressive", "classYear": 2027, "school": "SFS", "major": "International Economics", "hometown": "Silver Spring, MD" },
+  { "name": "Hannah Lowell", "role": "Member", "cohort": "Tory", "classYear": 2027, "school": "College", "major": "Classics", "hometown": "Portland, ME" },
+  { "name": "Ethan Brooks", "role": "Member", "cohort": "Federalist", "classYear": 2028, "school": "MSB", "major": "Accounting", "hometown": "Nashville, TN" },
+  { "name": "Isabel Navarro", "role": "Member", "cohort": "Independent", "classYear": 2028, "school": "College", "major": "Economics", "hometown": "Miami, FL" },
+  { "name": "Noah Fitzgerald", "role": "Member", "cohort": "Tory", "classYear": 2028, "school": "College", "major": "Government", "hometown": "Philadelphia, PA" },
+  { "name": "Amara Nwosu", "role": "Member", "cohort": "Progressive", "classYear": 2028, "school": "Nursing", "major": "Global Health", "hometown": "Houston, TX" },
+  { "name": "Lucas Ferreira", "role": "Member", "cohort": "Liberal", "classYear": 2029, "school": "SFS", "major": "Science, Technology & International Affairs", "hometown": "Newark, NJ" },
+  { "name": "Grace Holloway", "role": "Member", "cohort": "Federalist", "classYear": 2029, "school": "College", "major": "Philosophy", "hometown": "Richmond, VA" },
+  { "name": "Owen Castellano", "role": "Member", "cohort": "Independent", "classYear": 2029, "school": "MSB", "major": "Operations & Analytics", "hometown": "Denver, CO" },
+  { "name": "Mei Lin Zhou", "role": "Member", "cohort": "Progressive", "classYear": 2029, "school": "College", "major": "Linguistics", "hometown": "San Francisco, CA" },
+  { "name": "Samuel Adeyemi", "role": "Member", "cohort": "Tory", "classYear": 2029, "school": "SFS", "major": "Culture & Politics", "hometown": "Columbus, OH" },
+  { "name": "Charlotte Reyes", "role": "Member", "cohort": "Liberal", "classYear": 2030, "school": "College", "major": "Undeclared", "hometown": "Phoenix, AZ" },
+  { "name": "William Hart", "role": "Member", "cohort": "Federalist", "classYear": 2030, "school": "College", "major": "History", "hometown": "Charleston, SC" },
+  { "name": "Zara Hussain", "role": "Member", "cohort": "Independent", "classYear": 2030, "school": "SFS", "major": "Undeclared", "hometown": "Minneapolis, MN" },
+  { "name": "Benjamin Cole", "role": "Member", "cohort": "Tory", "classYear": 2030, "school": "MSB", "major": "Undeclared", "hometown": "Hartford, CT" },
+  { "name": "Ava Sinclair", "role": "Member", "cohort": "Progressive", "classYear": 2030, "school": "College", "major": "Government", "hometown": "Baltimore, MD" },
+  { "name": "Leo Moretti", "role": "Member", "cohort": "Liberal", "classYear": 2030, "school": "Nursing", "major": "Nursing", "hometown": "Pittsburgh, PA" }
+]
