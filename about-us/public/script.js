@@ -1,27 +1,3 @@
-// Members page: loads the member list from the Node server,
-// fills in the officers and the member cards, and handles search and filters.
-
-let members = [];
-
-const officerList = document.getElementById("officer-list");
-const memberList = document.getElementById("member-list");
-const count = document.getElementById("count");
-const empty = document.getElementById("empty");
-const searchBox = document.getElementById("search");
-const yearFilter = document.getElementById("year-filter");
-const cohortFilter = document.getElementById("cohort-filter");
-
-// Officers are listed in this order (the Society's traditional offices).
-// Any role that isn't "Member" counts as an officer.
-const OFFICER_ORDER = ["President", "Vice President", "Secretary", "Treasurer", "Amanuensis", "Censor"];
-
-// Cohorts in the order the current site lists them.
-const COHORTS = ["Progressive", "Liberal", "Independent", "Federalist", "Tory"];
-
-function isOfficer(m) {
-  return m.role && m.role !== "Member";
-}
-
 function escapeHTML(text) {
   return String(text).replace(/[&<>"']/g, (c) => ({
     "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;",
@@ -117,20 +93,3 @@ document.addEventListener("click", (e) => {
 });
 
 document.getElementById("year").textContent = new Date().getFullYear();
-
-fetch("/api/members")
-  .then((res) => {
-    if (!res.ok) throw new Error("Server error");
-    return res.json();
-  })
-  .then((data) => {
-    members = data;
-    showOfficers();
-    fillFilters();
-    showMembers();
-  })
-  .catch(() => {
-    count.textContent = "";
-    empty.hidden = false;
-    empty.textContent = "The member list couldn't be loaded. Make sure the server is running (npm start).";
-  });

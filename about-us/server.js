@@ -23,20 +23,6 @@ const CONTENT_TYPES = {
 const server = http.createServer((req, res) => {
   const url = new URL(req.url, `http://${req.headers.host}`);
 
-  // The page asks this address for the member list.
-  if (url.pathname === "/api/members") {
-    fs.readFile(MEMBERS_FILE, "utf8", (err, data) => {
-      if (err) {
-        res.writeHead(500, { "Content-Type": CONTENT_TYPES[".json"] });
-        res.end(JSON.stringify({ error: "Could not load the member list." }));
-        return;
-      }
-      res.writeHead(200, { "Content-Type": CONTENT_TYPES[".json"] });
-      res.end(data);
-    });
-    return;
-  }
-
   // Everything else comes from the "public" folder.
   const requested = url.pathname === "/" ? "/index.html" : decodeURIComponent(url.pathname);
   const filePath = path.normalize(path.join(PUBLIC_DIR, requested));
@@ -60,7 +46,7 @@ const server = http.createServer((req, res) => {
 });
 
 server.listen(PORT, () => {
-  console.log(`\n  Active Members page is running!`);
+  console.log(`\n  About Us page is running!`);
   console.log(`  Open this in your browser:  http://localhost:${PORT}\n`);
   console.log(`  (Press Ctrl + C here to stop it.)\n`);
 });
